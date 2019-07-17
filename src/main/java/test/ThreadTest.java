@@ -15,8 +15,10 @@ public class ThreadTest {
     private ThreadPoolExecutor executor;
 
 
+    /**
+     * 禁止通过new创建实例
+     */
     private ThreadTest() {
-
     }
 
     public static ThreadTest getInstance(){
