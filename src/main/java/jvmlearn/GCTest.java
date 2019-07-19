@@ -3,7 +3,7 @@ package jvmlearn;
 /**
  *
  * 控制台查看GC： java -verbose:gc GCTest.java
- * 或者 -XX:+PrintGCDetails -Xloggc:./gclogs
+ * 或者 -XX:+PrintGCDetails -Xloggc:./log/gclogs
  * 在项目主文件夹下生成gclogs文件
  * <pre>
  * [0.004s][info][gc] Using G1
