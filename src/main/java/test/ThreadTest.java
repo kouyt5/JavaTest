@@ -33,7 +33,7 @@ public class ThreadTest {
             ThreadFactory factory=new ThreadFactoryBuilder()
                     .setNameFormat("Thread-pool-%d")
                     .build();
-            executor = new ThreadPoolExecutor(4, 20,
+            executor = new ThreadPoolExecutor(6, 20,
                     2000, TimeUnit.MICROSECONDS, new LinkedBlockingQueue<Runnable>()
                     ,factory,new ThreadPoolExecutor.AbortPolicy());
         }
@@ -44,6 +44,7 @@ public class ThreadTest {
         final Logger logger= LoggerFactory.getLogger(ThreadTest.class);
         ThreadPoolExecutor executor = ThreadTest.getInstance().getThreadPoolExexutor();
         Runnable runnable=new Runnable() {
+            @Override
             public void run() {
                 try {
                     Thread.sleep(1000);

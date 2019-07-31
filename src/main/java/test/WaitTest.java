@@ -20,6 +20,7 @@ public class WaitTest {
                 2000, TimeUnit.MICROSECONDS, new LinkedBlockingQueue<Runnable>()
                 ,factory,new ThreadPoolExecutor.AbortPolicy());
         Runnable runnable1=new Runnable() {
+            @Override
             public void run() {
                 try {
                     System.out.println("start waitting");
@@ -41,6 +42,7 @@ public class WaitTest {
             }
         };
         Runnable runnable2=new Runnable() {
+            @Override
             public void run() {
                 synchronized (waitTest){
                     try {

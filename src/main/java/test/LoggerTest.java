@@ -30,6 +30,7 @@ public class LoggerTest {
     class TestProxy implements ITest{
 
 
+        @Override
         public void test() {
             System.out.println("running");
             try {

@@ -22,6 +22,18 @@ public class Student {
         this.age = age;
     }
 
+    /**
+     *
+     * @param name 名字
+     * @param sex 性别
+     * @param age 年龄
+     */
+    public Student(String name, String sex, int age){
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+    }
+
     public int getId() {
         return id;
     }

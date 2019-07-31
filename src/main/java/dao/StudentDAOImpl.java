@@ -24,6 +24,7 @@ public class StudentDAOImpl implements StudentDAO {
      * @return {@link Student}
      * @throws Exception
      */
+    @Override
     public Student findStudentById(int id) throws Exception {
         Student student=null;
         String sql="select * from student where id = ?";
@@ -46,8 +47,14 @@ public class StudentDAOImpl implements StudentDAO {
      * @return 是否成功
      * @throws Exception
      */
+    @Override
     public boolean insertStudent(Student student) throws Exception {
-        return false;
+        String sql="insert into student (name,age,sex) values(?,?,?)";
+        preparedStatement=connection.prepareStatement(sql);
+        preparedStatement.setString(1,student.getName());
+        preparedStatement.setInt(2,student.getAge());
+        preparedStatement.setString(3,student.getSex());
+        return preparedStatement.executeUpdate()>0?true:false;
     }
 
     /**
@@ -57,7 +64,11 @@ public class StudentDAOImpl implements StudentDAO {
      * @return 是否成功
      * @throws Exception
      */
+    @Override
     public boolean deleteStudentById(int id) throws Exception {
-        return false;
+        String sql="delete from student where id = ?";
+        preparedStatement=connection.prepareStatement(sql);
+        preparedStatement.setInt(1,id);
+        return preparedStatement.executeUpdate()>0?true:false;
     }
 }
