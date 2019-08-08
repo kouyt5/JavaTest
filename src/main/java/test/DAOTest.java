@@ -5,6 +5,7 @@ import dao.DBConnection;
 import dao.ServiceFactory;
 import dao.Student;
 import dao.service.StudentServiceImpl;
+import jwt.JwtBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,12 +15,19 @@ import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
 
 public class DAOTest {
+    private static Logger logger=LoggerFactory.getLogger(DAOTest.class);
 
     public static void main(String[] args) {
         DAOTest.dbMaxConnectionTest();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         DAOTest daoTest=new DAOTest();
+        daoTest.delete();
     }
-
+    
     public void insert() {
         Student student1 = new Student("陈", "男", 23);
         boolean result = false;
@@ -36,10 +44,11 @@ public class DAOTest {
         try {
             result = ServiceFactory.getStudentService().deleteStudentById(2);
         } catch (Exception e) {
+            logger.error(e.toString());
             e.printStackTrace();
         }
 
-        System.out.println("delete " + result);
+        logger.debug("delete"+result);
     }
 
     public static void dbMaxConnectionTest() {
@@ -59,7 +68,7 @@ public class DAOTest {
                 }
             }
         };
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 30; i++) {
             executor.execute(runnable);
         }
         executor.shutdown();

@@ -54,7 +54,7 @@ public class StudentDAOImpl implements StudentDAO {
         preparedStatement.setString(1,student.getName());
         preparedStatement.setInt(2,student.getAge());
         preparedStatement.setString(3,student.getSex());
-        return preparedStatement.executeUpdate()>0?true:false;
+        return preparedStatement.executeUpdate()>0;
     }
 
     /**
@@ -69,6 +69,6 @@ public class StudentDAOImpl implements StudentDAO {
         String sql="delete from student where id = ?";
         preparedStatement=connection.prepareStatement(sql);
         preparedStatement.setInt(1,id);
-        return preparedStatement.executeUpdate()>0?true:false;
+        return preparedStatement.executeUpdate()>0;
     }
 }

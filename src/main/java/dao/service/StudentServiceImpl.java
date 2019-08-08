@@ -66,7 +66,7 @@ public class StudentServiceImpl implements StudentService {
         try {
             result=DAOFactory.getStudentDAO(connection).deleteStudentById(id);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw e;
         }finally {
             if (connection != null) {
                 connection.close();
